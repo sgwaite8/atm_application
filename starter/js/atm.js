@@ -1,31 +1,64 @@
 //Begin with the document ready function
+$(document).ready(function() {
+ //Checking account deposit function
+ //On click of the depositChecking button
 
-    //Checking account deposit function
+ $("#depositChecking").click(function(event) {
+     console.log(event);
 
-      //On click of the depositChecking button
+     //Get value from the amountChecking input field
+     var depositAmount = parseInt($("#amountChecking").val(), 10);
+     var currentBalance = parseInt($('#checkingBalance').text().replace('$', ''), 10);
+     //Take that value and add it to the existing value in the checkingBalance div
+     var totalBalance = depositAmount + currentBalance;
+     $("#checkingBalance").text("$" + totalBalance);
+ });
 
-        //Get value from the amountChecking input field
 
-        //Take that value and add it to the existing value in the checkingBalance div
+ //Checking account withdrawl funtion
+ //On click of the withdrawChecking button
+ //Get value from the amountChecking input field
 
-    //Checking account withdrawl funtion
+   $("#withdrawChecking").click(function(event) {
+     console.log(event);
 
-      //On click of the withdrawChecking button
+     //Get value from the amountChecking input field
+     var withAmount = parseInt($("#amountChecking").val(), 10);
+     var currentBalance = parseInt($('#checkingBalance').text().replace('$', ''), 10);
+     //Take that value and add it to the existing value in the checkingBalance div
 
-        //Get value from the amountChecking input field
+     var totalBalance = currentBalance - withAmount;
 
-        // If that value is greater than the value in the account ignore that action
-        // In other words if this would put the account into a negative balance do not allow it
+     if (totalBalance >= withAmount) {
+       $("#checkingBalance").text("$" + totalBalance);
+     }
+ });
 
-        //Else subtract that value from the current amount in the checking account
+   $("#depositSavings").click(function(event) {
+     console.log(event);
 
-    //Savings account deposit function
+     //Get value from the amountChecking input field
+     var savingsDepositAmount = parseInt($("#amountSavings").val(), 10);
+     var savingsCurrentBalance = parseInt($('#savingsBalance').text().replace('$', ''), 10);
+     //Take that value and add it to the existing value in the checkingBalance div
+     var savingsTotalBalance = savingsDepositAmount + savingsCurrentBalance;
+     $("#savingsBalance").text("$" + savingsTotalBalance);
+ });
 
-      //On click of the depositSavings button
+    $("#withdrawSavings").click(function(event) {
+     console.log(event);
 
-        //Get value from the amountSavings input field
+     //Get value from the amountChecking input field
+     var savingsWithAmount = parseInt($("#amountSavings").val(), 10);
+     var savingsCurrentBalance = parseInt($('#savingsBalance').text().replace('$', ''), 10);
+     //Take that value and add it to the existing value in the checkingBalance div
 
-        //Take that value and add it to the existing value in the savingsBalance div
+     var savingsTotalBalance = savingsCurrentBalance - savingsWithAmount;
+
+     if (savingsTotalBalance >= savingsWithAmount) {
+       $("#savingsBalance").text("$" + savingsTotalBalance);
+     }
+ });
 
     //Savings account withdraw funtion
 
@@ -38,6 +71,23 @@
 
          //Else subtract that value from the current amount in the savings account
 
+});
+
+//On click of the withdrawChecking button
+
+        //Get value from the amountChecking input field
+
+        // If that value is greater than the value in the account ignore that action
+        // In other words if this would put the account into a negative balance do not allow it
+
+        //Else subtract that value from the current amount in the checking account
+        //Savings account deposit function
+
+      //On click of the depositSavings button
+
+        //Get value from the amountSavings input field
+
+        //Take that value and add it to the existing value in the savingsBalance div
 // Bonus-- get the two accounts to work with each other and allow for overdraft protection
 
 // Double Bonus-- This isnt very DRY.  Using the keyword "this" see if you can make the withdraw and deposit functions work for both accounts
